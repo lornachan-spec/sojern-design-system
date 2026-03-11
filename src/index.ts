@@ -20,3 +20,4 @@ export * from './components/SelectField';
 export * from './components/NavItem';
 export * from './components/SideNav';
 export * from './components/Badge';
+export * from './components/SecondaryNav';

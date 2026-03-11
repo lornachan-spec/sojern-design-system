@@ -20,6 +20,7 @@ import { SideNav } from '../src/components/SideNav';
 import type { SideNavItem } from '../src/components/SideNav';
 import { Icon, IconName } from '../src/components/Icons';
 import { Badge, BadgeStage } from '../src/components/Badge';
+import { SecondaryNav } from '../src/components/SecondaryNav';
 import { surface, text, neutrals } from '../src/tokens';
 
 const VARIANTS: ButtonVariant[] = ['special', 'primary', 'secondary', 'ghost', 'link', 'destructive'];
@@ -316,6 +317,9 @@ export function App() {
 
       {/* Side Nav */}
       <SideNavDemo />
+
+      {/* Secondary Nav */}
+      <SecondaryNavDemo />
 
       {/* Modals */}
       <ModalDemo />
@@ -1993,6 +1997,27 @@ function IconGalleryDemo() {
           </div>
         </div>
       ))}
+    </div>
+  );
+}
+
+function SecondaryNavDemo() {
+  const TABS = [
+    { id: 'invoices', label: 'Invoices' },
+    { id: 'reconciliation', label: 'Reconciliation' },
+    { id: 'credits', label: 'Credits' },
+    { id: 'statements', label: 'Statements' },
+  ];
+  const [activeTab, setActiveTab] = useState('invoices');
+
+  return (
+    <div style={sectionStyle}>
+      <div style={labelStyle}>Secondary Nav</div>
+      <div style={descStyle}>Horizontal tab navigation — active tab highlighted with an orange bottom border.</div>
+      <SecondaryNav tabs={TABS} activeId={activeTab} onTabChange={setActiveTab} />
+      <p style={{ marginTop: 16, fontSize: 13, color: neutrals[700] }}>
+        Active tab: <strong>{TABS.find(t => t.id === activeTab)?.label}</strong>
+      </p>
     </div>
   );
 }
